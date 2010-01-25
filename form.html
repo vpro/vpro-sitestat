@@ -1,0 +1,75 @@
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var $ = window.jQuery;
+        $("#counter").bind("keydown keyup", function(e) {
+            $("#counter-preview").text($(this).attr('value'));
+        });
+    });
+</script>
+
+<div class="wrap">
+    <div id="icon-options-general" class="icon32"></div>
+
+    <h2>VPRO Sitestat teller opties</h2>
+    <form name="vpro-sitestat" method="post" action="">
+    	<table class="form-table">
+            <tr>
+                <th><label for="counter">Tellernaam</label></th>
+                <td>
+                    <input type="text" id="counter" name="counter" value="{counter}" />
+                    <br />
+                    <span class="description">Hier kun je een eigen waarde
+                    opgeven, meestal is deze gelijk aan de titel van het blog, die alvast voor je is ingevuld.</span>
+                    <span class="description">Op achterliggende pagina's wordt automatisch
+                    extra informatie gegenereerd over de huidige pagina achter deze waarde.</span>
+                    <span class="description"><strong>Bijvoorbeeld</strong>:
+                    <span id="counter-preview">{counter-preview}</span>.pagina.pagina_naam</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th><label for="category">Categorie</label></th>
+                <td>
+                    <input type="text" id="category" name="category" value="{category}" />
+                    <br />
+                    <span class="description">De categorie is de inhoudelijke bundeling waaronder deze site valt. Bijvoorbeeld
+                    bij 3voor12 is dit '3voor12', bij cinema.nl is dat 'cinemanl'. Bij de site In Europa begint de tellernaam
+                    met 'ineuropa', maar is de categorie 'geschiedenis', waarmee je later bezoekers kan uitsplitsen naar
+                    deze categorie.
+                    <br />
+                    <strong>Let op:</strong> deze waarde dient ingevuld te worden door een projectleider van VPRO Digitaal.
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <th><label for="channel">Channel</label></th>
+                <td>
+                    <select id="channel" name="channel">
+                        {channels}
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th><label for="sitetype">Site type</label></th>
+                <td>
+                    <select id="sitetype" name="sitetype">
+                        {sitetypes}
+                    </select>
+                    <br />
+                    <span class="description">Dit label is bedoeld om in rapportages 
+                    onderscheid te kunnen maken tussen PIP (Programma Informatie 
+                    Pagina's) en pluswebsites.</span>
+                </td>
+            </tr>
+
+            <input type="hidden" id="vpro-sitestat" name="vpro-sitestat" />
+        </table>
+
+        <p class="submit">
+            <input class="button-primary" type="submit" value="Opslaan" name="Submit" />
+            <input type="submit" name="vpro-sitestat-reset" id="vpro-sitestat-reset" value="Herstel standaardwaarden" />
+        </p>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+<!-- Begin Sitestat 4 code -->
+<script type="text/javascript">
+(function() {
+    // We put this in an anomyous function to avoid cluttering the global namespace
+    function sitestat(url) {
+        url += "&ns__t=" + (new Date()).getTime();
+
+        // ns_pixelUrl = ns_l; // wtf?
+
+        var referrer = document.referrer;
+        if (referrer.lastIndexOf("/") == referrer.length - 1) {
+            referrer = referrer.substring(referrer.lastIndexOf("/"), 0);
+        }
+
+        if(referrer.length > 0) {
+            // url += "&ns_referrer=" + escape(ns_0); // escape is deprecated
+            url += "&ns_referrer=" + encodeURIComponent(referrer);
+        }
+
+        if(document.images) {
+            var img = new Image();
+            img.src = url;
+        } else {
+            document.write('<img src="' + url + '"  width="1" height="1">');
+        }
+    }
+
+    // All options
+    var
+        customername = "{customername}",
+        sitename     = "{sitename}",
+        counter      = "{counter}",
+        category     = "{category}",
+        channel      = "{channel}",
+        theme        = "{theme}",
+        url          = "";
+
+    url += "http://nl.sitestat.com/" + customername + "/" + sitename + "/s?";
+    url += counter + "&category=" + category + "&amp;ns_webdir=" + category;
+    url += "&amp;ns_channel=" + channel + "&amp;thema=" + theme;
+
+    sitestat(url);
+
+    // If for some reason you want to have the global sitestat() function, uncomment this line
+    // window.sitestat = sitestat;
+})();
+</script>
+
+<noscript>
+<img src="http://nl.sitestat.com/{customername}/{sitename}/s?{counter}&category={category}&amp;ns_webdir={category}&amp;ns_channel={channel}&amp;thema={theme}" width="1" height="1" alt="" />
+</noscript>
+<!-- End Sitestat4 code -->
